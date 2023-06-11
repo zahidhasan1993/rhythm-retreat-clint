@@ -37,18 +37,22 @@ const AuthProvider = ({children}) => {
         return signInWithPopup(auth,googleProvider)
     }
     const emailRegister = (email,password) => {
+        setLoader(true);
         return createUserWithEmailAndPassword(auth,email,password)
     }
     const emailLogin = (email,password) => {
+        setLoader(true);
         return signInWithEmailAndPassword(auth,email,password)
     }
     const userUpdate = (name, photo) => {
+        setLoader(true);
         return updateProfile(auth.currentUser, {
           displayName: name,
           photoURL: photo,
         });
       };
     const logOut = () => {
+        setLoader(true);
         return signOut(auth)
     }
     const Values = {

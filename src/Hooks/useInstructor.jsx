@@ -3,11 +3,12 @@ import useAxiosSecure from './useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 
 const useInstructor = () => {
-    const {user} = useAuth();
+    const {user,loader} = useAuth();
     const axios = useAxiosSecure();
 
     const {data: instructor,refetch,isLoading} = useQuery({
         queryKey: ['instructor', user?.email],
+        enabled: !loader,
         queryFn: async () => {
             const res = await axios(`/users/instructor/${user?.email}`)
             return res.data.instructor;

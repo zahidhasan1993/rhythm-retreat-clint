@@ -1,15 +1,57 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const AddClass = () => {
   const { user } = useAuth();
+  const imgApi = import.meta.env.VITE_IMG_API_KEY;
+  const axios = useAxiosSecure();
+  // console.log(imgApi);
+  // const imgUploadURL = `"https://api.imgbb.com/1/upload?key=${imgApi}"`
   const {
     register,
     handleSubmit,
     reset,
   } = useForm();
   const onSubmit = (data) => {
+    const formData = new FormData();
+    formData.append('image', data.image[0])
+    fetch(`https://api.imgbb.com/1/upload?key=${imgApi}`,{
+      method: 'POST',
+      body: formData
+    })
+    .then(res => res.json())
+    .then(imageData => {
+      if (imageData.success) {
+        const image = imageData.data.image.url;
+        const {className,instructorEmail,instructorName,price,availableSeats} = data;
+        const newData = {
+          className,
+          instructorEmail,
+          instructorName,
+          image : image,
+          price,
+          availableSeats
+        }
+        axios.post('/classes/addclass', newData)
+        .then(data => {
+          console.log(data.data);
+          if (data.data.acknowledged) {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Class Added',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            reset();
+          }
+        })
+
+      }
+    })
     console.log(data);
   };
   return (
@@ -40,7 +82,7 @@ const AddClass = () => {
                 placeholder="instructor name"
                 {...register("instructorName")}
                 className="input input-bordered"
-                defaultValue={user.displayName}
+                defaultValue={user?.displayName}
               />
             </div>
             <div className="form-control">
@@ -52,7 +94,7 @@ const AddClass = () => {
                 placeholder="instructor Email"
                 {...register("instructorEmail")}
                 className="input input-bordered"
-                defaultValue={user.email}
+                defaultValue={user?.email}
               />
             </div>
             <div className="form-control">

@@ -3,7 +3,7 @@ import RegisterLottie from "../../../assets/Images/Lottie/register.json";
 import useChangeTitle from "../../../Hooks/useChangeTitle";
 import Lottie from "react-lottie";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 
@@ -12,6 +12,7 @@ const Register = () => {
   const { googleLogin, emailRegister, userUpdate } = useAuth();
 
   const [error, setError] = useState("");
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -30,14 +31,29 @@ const Register = () => {
         .then(() => {
           userUpdate(data.name, data.photo)
             .then(() => {
-              reset();
-              Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "User Created Successful",
-                showConfirmButton: false,
-                timer: 1500,
-              });
+              const user = { name: data.name, email: data.email};
+              fetch("http://localhost:5000/users", {
+                method: "POST",
+                headers: {
+                  "Content-type": "application/json",
+                },
+                body: JSON.stringify(user),
+              })
+                .then((res) => res.json())
+                .then((data) => {
+                  console.log(data);
+                  if (data.insertedId) {
+                    reset()
+                    Swal.fire({
+                      position: "top-end",
+                      icon: "success",
+                      title: "Account Created Successfully",
+                      showConfirmButton: false,
+                      timer: 1500,
+                    });
+                    navigate("/");
+                  }
+                });
             })
             .catch(() => {});
         })

@@ -3,12 +3,15 @@ import useChangeTitle from "../../../Hooks/useChangeTitle";
 import { useForm } from "react-hook-form";
 import loginLottie from "../../../assets/Images/Lottie/Login.json";
 import Lottie from "react-lottie";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 const Login = () => {
   useChangeTitle("Login | Rhythm-Retreate");
   const { googleLogin,emailLogin } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const {
     register,
     handleSubmit,
@@ -25,6 +28,7 @@ const Login = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          navigate(from, { replace: true });
           reset()
 
     })

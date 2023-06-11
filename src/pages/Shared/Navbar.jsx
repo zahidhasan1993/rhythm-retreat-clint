@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
+  const { user,logOut } = useAuth();
+  const [hover, setHover] = useState(false);
+  const onHover = () => {
+    setHover(!hover);
+  };
+  const handleLogOut = () => {
+    logOut()
+    .then(() => {})
+    .catch(() => {})
+  }
   const links = (
     <>
       <NavLink
@@ -71,9 +82,34 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <Link to='/login' className="btn btn-outline text-white hover:bg-white hover:border-none hover:text-black">
-          Login
-        </Link>
+        {hover ? <p className="font-bold mr-1">{user.displayName}</p> : <></>}
+        {user ? (
+          <>
+            {" "}
+            <div
+              className="avatar online mr-2"
+              onMouseEnter={onHover}
+              onMouseLeave={onHover}
+            >
+              <div className="w-10 rounded-full">
+                <img src={user.photoURL} />
+              </div>
+            </div>
+            <button
+              onClick={handleLogOut}
+              className="btn btn-outline btn-error"
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <Link
+            to="/login"
+            className="btn btn-outline text-white hover:bg-white hover:border-none hover:text-black"
+          >
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );

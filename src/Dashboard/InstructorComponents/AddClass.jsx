@@ -29,10 +29,11 @@ const AddClass = () => {
         const {className,instructorEmail,instructorName,price,availableSeats} = data;
         const newData = {
           className,
-          instructorEmail,
-          instructorName,
+          email: instructorEmail,
+          name: instructorName,
           image : image,
           price,
+          status : 'pending',
           availableSeats
         }
         axios.post('/classes/addclass', newData)

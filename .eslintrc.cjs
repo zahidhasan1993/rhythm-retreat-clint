@@ -8,11 +8,12 @@ module.exports = {
     'plugin:react/recommended',
 
   ],
-  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module', },
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
     'react-refresh/only-export-components': 'warn',
     "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
   },
 }

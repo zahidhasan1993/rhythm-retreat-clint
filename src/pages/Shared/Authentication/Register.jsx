@@ -62,14 +62,32 @@ const Register = () => {
   };
   const handleGoogleLogin = () => {
     googleLogin()
-      .then(() => {
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "User Created Successful",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+      .then((result) => {
+        console.log(result);
+        const user = { name: result.user.displayName, email: result.user.email};
+              fetch("http://localhost:5000/users", {
+                method: "POST",
+                headers: {
+                  "Content-type": "application/json",
+                },
+                body: JSON.stringify(user),
+              })
+                .then((res) => res.json())
+                .then((data) => {
+                  // console.log(data);
+                  if (data.insertedId) {
+                    reset()
+                    Swal.fire({
+                      position: "top-end",
+                      icon: "success",
+                      title: "Account Created Successfully",
+                      showConfirmButton: false,
+                      timer: 1500,
+                    });
+                    navigate("/");
+                  }
+                });
+        
       })
       .catch(() => {});
   };

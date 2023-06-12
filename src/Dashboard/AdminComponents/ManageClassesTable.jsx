@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ManageClassesTable = ({item,index,handleApproved}) => {
+const ManageClassesTable = ({item,index,handleApproved,handleDeny}) => {
     return (
         <tr>
         <th>
@@ -34,7 +34,7 @@ const ManageClassesTable = ({item,index,handleApproved}) => {
             <button onClick={() => handleApproved(item)} disabled={item?.status === 'approved' || item?.status === 'denied'} className='btn btn-xs btn-ghost'>Approve</button>
         </th>
         <th>
-            <button className='btn btn-xs btn-ghost' disabled={item?.status === 'approved' || item?.status === 'denied'}>Deny</button>
+            <button onClick={() => handleDeny(item)} className='btn btn-xs btn-ghost' disabled={item?.status === 'approved' || item?.status === 'denied'}>Deny</button>
         </th>
         <th>
             <button className='btn btn-xs btn-ghost'>Send Feedback</button>

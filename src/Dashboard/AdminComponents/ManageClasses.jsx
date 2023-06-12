@@ -15,7 +15,7 @@ const ManageClasses = () => {
     },
   });
   const handleApproved = (item) => {
-    console.log(item)
+    // console.log(item)
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -33,6 +33,30 @@ const ManageClasses = () => {
           .then((data) => {
             if (data.modifiedCount) {
               Swal.fire(`${item.className} is now Approved`);
+              refetch();
+            }
+          });
+      }
+    });
+  }
+  const handleDeny = (item) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: `Yes, Deny ${item.className}!!!`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/classes/deny/${item._id}`, {
+          method: "PATCH",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.modifiedCount) {
+              Swal.fire(`${item.className} is now denied`);
               refetch();
             }
           });
@@ -62,7 +86,7 @@ const ManageClasses = () => {
           </thead>
           <tbody>
             {
-                classes.map((item,index) => <ManageClassesTable key={item._id} index={index} item={item} handleApproved={handleApproved}></ManageClassesTable>)
+                classes.map((item,index) => <ManageClassesTable key={item._id} index={index} item={item} handleApproved={handleApproved} handleDeny={handleDeny}></ManageClassesTable>)
             }
           </tbody>
          

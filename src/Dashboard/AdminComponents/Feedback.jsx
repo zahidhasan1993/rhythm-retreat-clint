@@ -24,23 +24,6 @@ const Feedback = ({ isOpen, closeModal, item }) => {
       }
     });
 
-    // fetch(`http://localhost:5000/classes/feedback/${item._id}`, {
-    //       method: "PATCH",
-    //       body: JSON.stringify(feedback)
-    //     })
-    //       .then((res) => res.json())
-    //       .then((data) => {
-    //         if (data.modifiedCount) {
-    //             Swal.fire({
-    //                 position: 'top-end',
-    //                 icon: 'success',
-    //                 title: `Feedback given to ${item.name}`,
-    //                 showConfirmButton: false,
-    //                 timer: 1500
-    //               })
-    //               e.target.reset()
-    //         }
-    //       });
   };
 
   return (

@@ -26,16 +26,25 @@ const ManageClasses = () => {
       confirmButtonText: `Yes, Approve ${item.className}!!!`,
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/classes/approve/${item._id}`, {
-          method: "PATCH",
+        // fetch(`http://localhost:5000/classes/approve/${item._id}`, {
+        //   method: "PATCH",
+        // })
+        //   .then((res) => res.json())
+        //   .then((data) => {
+        //     if (data.modifiedCount) {
+        //       Swal.fire(`${item.className} is now Approved`);
+        //       refetch();
+        //     }
+        
+
+        //   });
+        axios.patch(`/classes/approve/${item._id}`)
+        .then(data => {
+          if (data.data.modifiedCount) {
+                  Swal.fire(`${item.className} is now Approved`);
+                  refetch();
+                }
         })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.modifiedCount) {
-              Swal.fire(`${item.className} is now Approved`);
-              refetch();
-            }
-          });
       }
     });
   }
@@ -50,16 +59,23 @@ const ManageClasses = () => {
       confirmButtonText: `Yes, Deny ${item.className}!!!`,
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/classes/deny/${item._id}`, {
-          method: "PATCH",
+        // fetch(`http://localhost:5000/classes/deny/${item._id}`, {
+        //   method: "PATCH",
+        // })
+        //   .then((res) => res.json())
+        //   .then((data) => {
+        //     if (data.modifiedCount) {
+        //       Swal.fire(`${item.className} is now denied`);
+        //       refetch();
+        //     }
+        //   });
+        axios.patch(`/classes/deny/${item._id}`)
+        .then(data => {
+          if (data.data.modifiedCount) {
+                  Swal.fire(`${item.className} is now Denied`);
+                  refetch();
+                }
         })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.modifiedCount) {
-              Swal.fire(`${item.className} is now denied`);
-              refetch();
-            }
-          });
       }
     });
   }

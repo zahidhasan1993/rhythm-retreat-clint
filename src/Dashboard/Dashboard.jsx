@@ -54,7 +54,7 @@ const Dashboard = () => {
                 <li>Add Class</li>
               </NavLink>
               <NavLink
-                to=""
+                to="/dashboard/myclass"
                 className={({ isActive }) =>
                   isActive ? "text-amber-700 font-bold" : "hover:text-amber-700"
                 }

@@ -11,6 +11,7 @@ import AddClass from "../Dashboard/InstructorComponents/AddClass";
 import InstructorRoute from "./InstructorRoute";
 import ManageClasses from "../Dashboard/AdminComponents/ManageClasses";
 import Feedback from "../Dashboard/AdminComponents/Feedback";
+import MyClasses from "../Dashboard/InstructorComponents/MyClasses";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,14 @@ const router = createBrowserRouter([
         element: (
           <InstructorRoute>
             <AddClass></AddClass>
+          </InstructorRoute>
+        ),
+      },
+      {
+        path: "myclass",
+        element: (
+          <InstructorRoute>
+            <MyClasses></MyClasses>
           </InstructorRoute>
         ),
       },

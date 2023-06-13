@@ -1,15 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import MyclassesTable from "./MyclassesTable";
 
 const MyClasses = () => {
-  const axios = useAxiosSecure();
-  const { data: classes = [], refetch } = useQuery({
+  const { data: classes = [] } = useQuery({
     queryKey: ["classes"],
     queryFn: async () => {
-      const res = await axios("/classes");
-      return res.data;
+    const res = await fetch("http://localhost:5000/classes")
+      return res.json()
     },
   });
   // console.log(classes);

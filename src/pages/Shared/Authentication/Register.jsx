@@ -55,7 +55,7 @@ const Register = () => {
                   }
                 });
             })
-            .catch(() => {});
+            .catch((error) => { console.log(error);});
         })
         .catch(() => {});
     }

@@ -20,6 +20,7 @@
     "react-hook-form": "^7.44.3",
     "react-lottie": "^1.2.3",
     "react-modal": "^3.16.1",
+    "react-parallax": "^3.5.1",
     "react-router-dom": "^6.12.1",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.7.12",

@@ -19,9 +19,9 @@ const ClassesCard = ({item,handleSelect}) => {
     const loginUser = users.find(data => data?.email === user?.email)
 
     
-    console.log(loginUser?.role);
+    // console.log(loginUser?.role);
   return (
-    <div className="card w-full shadow-xl">
+    <div className={availableSeats === '0' ? "card w-full bg-red-700 shadow-xl" : "card w-full shadow-xl"}>
       <figure>
         <img
           src={image}
@@ -35,7 +35,7 @@ const ClassesCard = ({item,handleSelect}) => {
         <p>Available Seats : {availableSeats}</p>
         <p>Cost : <span className="text-amber-700">${price}</span></p>
         <div className="card-actions justify-end">
-          <button onClick={handleSelect} className="btn btn-outline text-blue-700 hover:bg-blue-700" disabled={loginUser?.role === 'instructor' || loginUser?.role === 'admin'}>Select This</button>
+          <button onClick={handleSelect} className="btn btn-outline text-blue-700 hover:bg-blue-700" disabled={loginUser?.role === 'instructor' || loginUser?.role === 'admin' || availableSeats === 0}>Select This</button>
         </div>
       </div>
     </div>

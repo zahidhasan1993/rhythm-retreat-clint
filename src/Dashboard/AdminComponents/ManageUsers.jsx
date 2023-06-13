@@ -24,16 +24,25 @@ const ManageUsers = () => {
       confirmButtonText: `Yes, Make ${user.name} Admin !!!`,
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
-          method: "PATCH",
+        // fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        //   method: "PATCH",
+        // })
+        //   .then((res) => res.json())
+        //   .then((data) => {
+        //     if (data.modifiedCount) {
+        //       Swal.fire(`${user.name} is now Admin`);
+        //       refetch();
+        //     }
+        //   });
+        axios.patch(`/users/admin/${user._id}`)
+        .then(data => {
+          console.log(data.data);
+          if (data.data.modifiedCount) {
+                Swal.fire(`${user.name} is now Admin`);
+                refetch();
+              }
         })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.modifiedCount) {
-              Swal.fire(`${user.name} is now Admin`);
-              refetch();
-            }
-          });
+        
       }
     });
     // console.log(user);
@@ -46,20 +55,19 @@ const ManageUsers = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: `Yes, Make ${user.name} Admin !!!`,
+      confirmButtonText: `Yes, Make ${user.name} Instructor !!!`,
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
-          method: "PATCH",
+        axios.patch(`/users/instructor/${user._id}`)
+        .then(data => {
+          console.log(data.data);
+          if (data.data.modifiedCount) {
+                Swal.fire(`${user.name} is now Instructor`);
+                refetch();
+              }
         })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.modifiedCount) {
-              Swal.fire(`${user.name} is now Instructor`);
-              refetch();
-            }
-          });
       }
+      
     });
   };
   //   console.log(users);

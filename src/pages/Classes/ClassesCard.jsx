@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import useAuth from "../../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const ClassesCard = ({item,handleSelect}) => {
-    const {availableSeats,className,image,name,price,_id} = item;
+    const {availableSeats,className,image,name,price} = item;
     // console.log(item);
     
     const {user} = useAuth();

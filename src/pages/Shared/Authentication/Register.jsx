@@ -31,7 +31,7 @@ const Register = () => {
         .then(() => {
           userUpdate(data.name, data.photo)
             .then(() => {
-              const user = { name: data.name, email: data.email};
+              const user = { name: data.name, email: data.email,photoURL: data.photo};
               fetch("http://localhost:5000/users", {
                 method: "POST",
                 headers: {
@@ -54,6 +54,7 @@ const Register = () => {
                     navigate("/");
                   }
                 });
+              // console.log(result);
             })
             .catch((error) => { console.log(error);});
         })
@@ -64,7 +65,7 @@ const Register = () => {
     googleLogin()
       .then((result) => {
         console.log(result);
-        const user = { name: result.user.displayName, email: result.user.email};
+        const user = { name: result.user.displayName, email: result.user.email,photoURL: result.user.photoURL};
               fetch("http://localhost:5000/users", {
                 method: "POST",
                 headers: {

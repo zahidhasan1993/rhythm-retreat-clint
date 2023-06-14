@@ -80,6 +80,14 @@ const Dashboard = () => {
               >
                 <li className="mt-10">My Enrolled Classes</li>
               </NavLink>
+              <NavLink
+                to="/dashboard/paymenthistory"
+                className={({ isActive }) =>
+                  isActive ? "text-amber-700 font-bold" : "hover:text-amber-700"
+                }
+              >
+                <li className="mt-10">Payment History</li>
+              </NavLink>
             </>
           )}
 

@@ -18,6 +18,7 @@ import SelectedClasses from "../Dashboard/StudentComponents/SelectedClasses";
 import EnrolledClasses from "../Dashboard/StudentComponents/EnrolledClasses";
 import PrivateRoute from "./PrivateRoute";
 import Payment from "../Dashboard/Payment/Payment";
+import PaymentHistory from "../Dashboard/Payment/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <SelectedClasses></SelectedClasses>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "paymenthistory",
+        element: (
+          <PrivateRoute>
+            <PaymentHistory></PaymentHistory>
           </PrivateRoute>
         ),
       },

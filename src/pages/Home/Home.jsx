@@ -1,15 +1,35 @@
-import React from 'react';
-import useChangeTitle from '../../Hooks/useChangeTitle';
-import Banner from './Banner';
-import PopularClasses from './PopularClasses';
+import React, { useEffect } from "react";
+import useChangeTitle from "../../Hooks/useChangeTitle";
+import Banner from "./Banner";
+import PopularClasses from "./PopularClasses";
+import OurInsturctors from "./OurInsturctors";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import CallUs from "./CallUs";
+import FeedBack from "./FeedBack";
+
 const Home = () => {
-    useChangeTitle('Home | Rhythm Retreate');
-    return (
-        <div>
-            <Banner></Banner>
-            <PopularClasses></PopularClasses>
-        </div>
-    );
+  useChangeTitle("Home | Rhythm Retreate");
+  useEffect(() => {
+    AOS.init();
+  }, []);
+  return (
+    <div className="py-20">
+      <Banner></Banner>
+      <div data-aos="zoom-in-up">
+        <PopularClasses></PopularClasses>
+      </div>
+      <div data-aos='fade-up'>
+        <OurInsturctors></OurInsturctors>
+      </div>
+      <div data-aos='zoom-in'>
+        <CallUs></CallUs>
+      </div>
+      <div data-aos="zoom-out">
+        <FeedBack></FeedBack>
+      </div>
+    </div>
+  );
 };
 
 export default Home;

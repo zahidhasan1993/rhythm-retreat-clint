@@ -4,7 +4,8 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
-const CheckoutForm = ({ price,id }) => {
+const CheckoutForm = ({ price,id,myClass }) => {
+  const {className,email,name,image} = myClass;
   const [error, setError] = useState("");
   const axios = useAxiosSecure();
   const stripe = useStripe();
@@ -78,6 +79,10 @@ const CheckoutForm = ({ price,id }) => {
         email : user.email,
         tarnsitionId: paymentIntent.id,
         price: paymentIntent.amount / 100,
+        image,
+        instructor_name: name,
+        instructor_email: email,
+        className,
         date: new Date(),
       }
       axios.post(`/payment/${user.email}`,payment)

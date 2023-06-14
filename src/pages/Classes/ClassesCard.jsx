@@ -9,6 +9,8 @@ const ClassesCard = ({ item, handleSelect }) => {
 
   const { user } = useAuth();
   const axios = useAxiosSecure();
+  const newAvailableSetas =parseFloat( availableSeats) - item?.student_enrolled;
+  // const newAvailableSetas = 
 
   const { data: users = [] } = useQuery({
     queryKey: ["users"],
@@ -34,7 +36,7 @@ const ClassesCard = ({ item, handleSelect }) => {
       <div className="card-body">
         <h2 className="card-title">{className}</h2>
         <p>Instructor Name : {name}</p>
-        <p>Available Seats : {availableSeats}</p>
+        <p>Available Seats : {newAvailableSetas}</p>
         <p>
           Cost : <span className="text-amber-700">${price}</span>
         </p>
@@ -45,7 +47,7 @@ const ClassesCard = ({ item, handleSelect }) => {
             disabled={
               loginUser?.role === "instructor" ||
               loginUser?.role === "admin" ||
-              availableSeats === 0
+              newAvailableSetas === 0
             }
           >
             Select This

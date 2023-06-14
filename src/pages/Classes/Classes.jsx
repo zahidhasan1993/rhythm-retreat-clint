@@ -26,7 +26,7 @@ const Classes = () => {
       // console.log(user);
       return;
     }
-    const myClass = { class_id: _id, image, className, price: parseFloat(price), instructor_name : name };
+    const myClass = { class_id: _id, image, className, price: parseFloat(price), instructor_name : name, email: user?.email };
     if (user) {
         axios.post('/cart',myClass)
         .then(data => {

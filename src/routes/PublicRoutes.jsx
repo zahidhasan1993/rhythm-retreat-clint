@@ -14,7 +14,10 @@ import Feedback from "../Dashboard/AdminComponents/Feedback";
 import MyClasses from "../Dashboard/InstructorComponents/MyClasses";
 import Classes from "../pages/Classes/Classes";
 import Instructor from "../pages/Instructor/Instructor";
-
+import SelectedClasses from "../Dashboard/StudentComponents/SelectedClasses";
+import EnrolledClasses from "../Dashboard/StudentComponents/EnrolledClasses";
+import PrivateRoute from "./PrivateRoute";
+import Payment from "../Dashboard/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +30,14 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
+        path: "classes",
+        element: <Classes></Classes>,
+      },
+      {
+        path: "instructor",
+        element: <Instructor></Instructor>,
+      },
+      {
         path: "registration",
         element: <Register></Register>,
       },
@@ -34,20 +45,41 @@ const router = createBrowserRouter([
         path: "login",
         element: <Login></Login>,
       },
-      {
-        path: "classes",
-        element: <Classes></Classes>
-      },
-      {
-        path: 'instructor',
-        element: <Instructor></Instructor>
-      }
     ],
   },
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
+      // student routes
+      {
+        path: "selectedclass",
+        element: (
+          <PrivateRoute>
+            <SelectedClasses></SelectedClasses>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "enrolledclass",
+        element: (
+          <PrivateRoute>
+            <EnrolledClasses></EnrolledClasses>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "payment/:id",
+        element: (
+          <PrivateRoute>
+            <Payment></Payment>
+          </PrivateRoute>
+        ),
+      },
       //admin routes
       {
         path: "manageuser",

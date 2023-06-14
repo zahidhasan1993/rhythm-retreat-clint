@@ -65,7 +65,7 @@ const Dashboard = () => {
           ) : (
             <>
               <NavLink
-                to=""
+                to="/dashboard/selectedclass"
                 className={({ isActive }) =>
                   isActive ? "text-amber-700 font-bold" : "hover:text-amber-700"
                 }
@@ -73,7 +73,7 @@ const Dashboard = () => {
                 <li>My Selected Classes</li>
               </NavLink>
               <NavLink
-                to=""
+                to="/dashboard/enrolledclass"
                 className={({ isActive }) =>
                   isActive ? "text-amber-700 font-bold" : "hover:text-amber-700"
                 }

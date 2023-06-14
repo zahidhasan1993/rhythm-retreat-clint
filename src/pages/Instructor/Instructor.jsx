@@ -1,20 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BannerImg from "../../assets/Images/Banner/instructorBanner.jpg";
 import SharedBanner from "../Shared/SharedBanner";
-import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import InstructorCard from "./InstructorCard";
 
 const Instructor = () => {
-  const axios = useAxiosSecure();
-  const { data: users = [] } = useQuery({
-    queryKey: ["instructors"],
-    queryFn: async () => {
-      const res = await axios("/users");
-      return res.data;
-    },
-  });
-
+  // const axios = useAxiosSecure();
+  // const { data: users = [] } = useQuery({
+  //   queryKey: ["instructors"],
+  //   queryFn: async () => {
+  //     const res = await axios("/users");
+  //     return res.data;
+  //   },
+  // });
+  const [users ,setUsers] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:5000/users')
+    .then(res => res.json())
+    .then(data => {
+      setUsers(data)
+    })
+  }, [])
+  console.log(users);
   const instructors = users.filter(
     (instructor) => instructor?.role === "instructor"
   );

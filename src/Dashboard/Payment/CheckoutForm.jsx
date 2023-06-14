@@ -4,7 +4,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
-const CheckoutForm = ({ price }) => {
+const CheckoutForm = ({ price,id }) => {
   const [error, setError] = useState("");
   const axios = useAxiosSecure();
   const stripe = useStripe();
@@ -64,6 +64,9 @@ const CheckoutForm = ({ price }) => {
     }
     console.log(paymentIntent);
     if (paymentIntent.status === 'succeeded') {
+      fetch(`http://localhost:5000/updatecount/${id}`, {
+        method: "PATCH"
+      })
       Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -81,6 +84,7 @@ const CheckoutForm = ({ price }) => {
       .then(res => {
         console.log(res.data);
       })
+
     }
   };
   return (

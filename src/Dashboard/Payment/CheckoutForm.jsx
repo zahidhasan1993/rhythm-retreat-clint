@@ -4,12 +4,12 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
-const CheckoutForm = ({ price,id,myClass }) => {
-  const {className,email,name,image} = myClass;
+const CheckoutForm = ({ price, id, myClass }) => {
+  const { className, email, name, image } = myClass;
   const [error, setError] = useState("");
   const axios = useAxiosSecure();
   const stripe = useStripe();
-  const {user} = useAuth();
+  const { user } = useAuth();
   const elements = useElements();
   const [clintSecret, setClintSecret] = useState("");
   // console.log(clintSecret);
@@ -19,7 +19,7 @@ const CheckoutForm = ({ price,id,myClass }) => {
       axios.post("/create-payment-intent", { price }).then((res) => {
         // setClintSecret(res.data.clintSecret);
         // console.log(res.data.clientSecret);
-        setClintSecret(res.data.clientSecret)
+        setClintSecret(res.data.clientSecret);
       });
     }
   }, [price, axios]);
@@ -43,9 +43,9 @@ const CheckoutForm = ({ price,id,myClass }) => {
       setError(error.message);
     } else {
       // console.log(paymentMethod);
-      setError('')
+      setError("");
     }
-    const {paymentIntent, error: cardError} = await stripe.confirmCardPayment(
+    const { paymentIntent, error: cardError } = await stripe.confirmCardPayment(
       clintSecret,
       {
         payment_method: {
@@ -53,30 +53,28 @@ const CheckoutForm = ({ price,id,myClass }) => {
           billing_details: {
             name: user?.displayName,
             email: user?.email,
-            
           },
         },
-      },
-      
+      }
     );
     if (cardError) {
       // setError(cardError)
       console.log(cardError);
     }
     console.log(paymentIntent);
-    if (paymentIntent.status === 'succeeded') {
-      fetch(`http://localhost:5000/updatecount/${id}`, {
-        method: "PATCH"
-      })
+    if (paymentIntent.status === "succeeded") {
+      fetch(`https://rhythm-retreat-server.vercel.app/updatecount/${id}`, {
+        method: "PATCH",
+      });
       Swal.fire({
-        position: 'top-end',
-        icon: 'success',
+        position: "top-end",
+        icon: "success",
         title: `$${paymentIntent.amount / 100} Payment Successful`,
         showConfirmButton: false,
-        timer: 1500
-      })
+        timer: 1500,
+      });
       const payment = {
-        email : user.email,
+        email: user.email,
         tarnsitionId: paymentIntent.id,
         price: paymentIntent.amount / 100,
         image,
@@ -84,12 +82,10 @@ const CheckoutForm = ({ price,id,myClass }) => {
         instructor_email: email,
         className,
         date: new Date(),
-      }
-      axios.post(`/payment/${user.email}`,payment)
-      .then(res => {
+      };
+      axios.post(`/payment/${user.email}`, payment).then((res) => {
         console.log(res.data);
-      })
-
+      });
     }
   };
   return (

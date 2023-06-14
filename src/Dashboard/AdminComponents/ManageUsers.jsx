@@ -3,8 +3,10 @@ import React from "react";
 import ManageUserTable from "./ManageUserTable";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useChangeTitle from "../../Hooks/useChangeTitle";
 
 const ManageUsers = () => {
+  useChangeTitle('ManageUsers | Rhythm-Retreat')
   const axios = useAxiosSecure();
   const { data: users = [], refetch } = useQuery({
     queryKey: ["user"],
@@ -24,7 +26,7 @@ const ManageUsers = () => {
       confirmButtonText: `Yes, Make ${user.name} Admin !!!`,
     }).then((result) => {
       if (result.isConfirmed) {
-        // fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        // fetch(`https://rhythm-retreat-server.vercel.app/users/admin/${user._id}`, {
         //   method: "PATCH",
         // })
         //   .then((res) => res.json())

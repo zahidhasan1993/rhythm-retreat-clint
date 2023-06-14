@@ -4,8 +4,10 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
 import SelectedClassTable from "./SelectedClassTable";
 import Swal from "sweetalert2";
+import useChangeTitle from "../../Hooks/useChangeTitle";
 
 const SelectedClasses = () => {
+  useChangeTitle('SelectClass | rhythm-retreat')
   const { user } = useAuth();
   const axios = useAxiosSecure();
   const { data: carts = [], refetch } = useQuery({

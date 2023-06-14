@@ -1,6 +1,9 @@
 import React from 'react';
 
 const MyclassesTable = ({index, item}) => {
+  console.log(item);
+  const totalStudent = item?.student_enrolled;
+  console.log(totalStudent);
     return (
         <tr>
                 <th>
@@ -22,10 +25,13 @@ const MyclassesTable = ({index, item}) => {
                   {item.className}
                 </td>
                 <td>{item.status}</td>
+                <td>
+                 {totalStudent}
+                </td>
+                <td>{item?.feedback?.feedback}</td>
                 <th>
-                  0
+                  <button>update</button>
                 </th>
-                <th>{item?.feedback?.feedback}</th>
               </tr>
     );
 };

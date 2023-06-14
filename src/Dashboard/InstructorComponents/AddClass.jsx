@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useChangeTitle from "../../Hooks/useChangeTitle";
 
 const AddClass = () => {
+  useChangeTitle('AddClass | Rhythm-Retreat')
   const { user } = useAuth();
   const imgApi = import.meta.env.VITE_IMG_API_KEY;
   const axios = useAxiosSecure();
@@ -34,7 +36,8 @@ const AddClass = () => {
           image : image,
           price,
           status : 'pending',
-          availableSeats
+          availableSeats,
+          student_enrolled: 0
         }
         axios.post('/classes/addclass', newData)
         .then(data => {

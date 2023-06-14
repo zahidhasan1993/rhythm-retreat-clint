@@ -6,13 +6,15 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useChangeTitle from "../../Hooks/useChangeTitle";
 const Classes = () => {
+  useChangeTitle('Classes | Rhythm-Retreat')
   const [classes, setClasses] = useState([]);
   const navigate = useNavigate();
   const { user } = useAuth();
   const axios = useAxiosSecure();
   useEffect(() => {
-    fetch("http://localhost:5000/classes")
+    fetch("https://rhythm-retreat-server.vercel.app/classes")
       .then((res) => res.json())
       .then((data) => setClasses(data));
   }, []);

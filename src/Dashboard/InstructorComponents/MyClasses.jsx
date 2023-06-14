@@ -1,16 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import MyclassesTable from "./MyclassesTable";
+import useAuth from "../../Hooks/useAuth";
+import useChangeTitle from "../../Hooks/useChangeTitle";
 
 const MyClasses = () => {
+  useChangeTitle('MyClass | Rhythm-Retreat')
+  const {user} = useAuth();
   const { data: classes = [] } = useQuery({
     queryKey: ["classes"],
     queryFn: async () => {
-    const res = await fetch("http://localhost:5000/classes")
+    const res = await fetch("https://rhythm-retreat-server.vercel.app/classes")
       return res.json()
     },
   });
-  // console.log(classes);
+  const myClasses = classes.filter(myClass => myClass.email === user.email)
+
+  // console.log(myClasses);
   return (
     <div className="w-full px-10">
       <h1 className="my-10 text-lg font-semibold">Total Students Enrolled : 0</h1>
@@ -31,7 +37,7 @@ const MyClasses = () => {
           </thead>
           <tbody>
             {
-              classes.map((item,index) => <MyclassesTable key={item._id} item={item} index={index}></MyclassesTable>)
+              myClasses.map((item,index) => <MyclassesTable key={item._id} item={item} index={index}></MyclassesTable>)
             }
           </tbody>
         </table>

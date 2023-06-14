@@ -3,8 +3,10 @@ import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import PaymentHistoryTable from "./PaymentHistoryTable";
+import useChangeTitle from "../../Hooks/useChangeTitle";
 
 const PaymentHistory = () => {
+  useChangeTitle('Payment | Rhythm-Retreat')
   const { user } = useAuth();
   const axios = useAxiosSecure();
   const { data: myPayments = [] } = useQuery({

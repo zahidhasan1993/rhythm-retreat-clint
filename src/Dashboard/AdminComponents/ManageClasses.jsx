@@ -3,8 +3,10 @@ import React from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import ManageClassesTable from "./ManageClassesTable";
 import Swal from "sweetalert2";
+import useChangeTitle from "../../Hooks/useChangeTitle";
 
 const ManageClasses = () => {
+  useChangeTitle('manageClass | Rhythm-Retreat')
   const axios = useAxiosSecure();
 
   const { data: classes = [], refetch } = useQuery({
@@ -15,6 +17,7 @@ const ManageClasses = () => {
     },
   });
   const handleApproved = (item) => {
+    
     // console.log(item)
     Swal.fire({
       title: "Are you sure?",
@@ -26,7 +29,7 @@ const ManageClasses = () => {
       confirmButtonText: `Yes, Approve ${item.className}!!!`,
     }).then((result) => {
       if (result.isConfirmed) {
-        // fetch(`http://localhost:5000/classes/approve/${item._id}`, {
+        // fetch(`https://rhythm-retreat-server.vercel.app/classes/approve/${item._id}`, {
         //   method: "PATCH",
         // })
         //   .then((res) => res.json())
@@ -59,7 +62,7 @@ const ManageClasses = () => {
       confirmButtonText: `Yes, Deny ${item.className}!!!`,
     }).then((result) => {
       if (result.isConfirmed) {
-        // fetch(`http://localhost:5000/classes/deny/${item._id}`, {
+        // fetch(`https://rhythm-retreat-server.vercel.app/classes/deny/${item._id}`, {
         //   method: "PATCH",
         // })
         //   .then((res) => res.json())

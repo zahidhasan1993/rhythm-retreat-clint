@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import BannerImg from "../../assets/Images/Banner/instructorBanner.jpg";
 import SharedBanner from "../Shared/SharedBanner";
 import InstructorCard from "./InstructorCard";
+import useChangeTitle from "../../Hooks/useChangeTitle";
 
 const Instructor = () => {
+  useChangeTitle('Instructor | Rhythm-Retreat')
   // const axios = useAxiosSecure();
   // const { data: users = [] } = useQuery({
   //   queryKey: ["instructors"],
@@ -14,7 +16,7 @@ const Instructor = () => {
   // });
   const [users ,setUsers] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/users')
+    fetch('https://rhythm-retreat-server.vercel.app/users')
     .then(res => res.json())
     .then(data => {
       setUsers(data)

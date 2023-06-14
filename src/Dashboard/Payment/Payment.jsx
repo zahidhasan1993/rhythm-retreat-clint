@@ -3,19 +3,20 @@ import { loadStripe } from "@stripe/stripe-js";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CheckoutForm from "./CheckoutForm";
+import useChangeTitle from "../../Hooks/useChangeTitle";
 
 
 
 
 const Payment = () => {
-
+  useChangeTitle('CheckOut | Rhythm-Retreat')
   const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_KEY);
   const {id} = useParams();
   // console.log(id);
 
   const [myClass,setMyClass] = useState([])
   useEffect(() => {
-    fetch(`http://localhost:5000/classes/${id}`)
+    fetch(`https://rhythm-retreat-server.vercel.app/classes/${id}`)
     .then(res => res.json())
     .then(data => setMyClass(data))
   }, [id])

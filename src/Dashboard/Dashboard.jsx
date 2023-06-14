@@ -2,8 +2,10 @@ import React from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../Hooks/useAdmin";
 import useInstructor from "../Hooks/useInstructor";
+import useChangeTitle from "../Hooks/useChangeTitle";
 
 const Dashboard = () => {
+  useChangeTitle('Dashboard | Rhythm-Retreat')
   const { admin } = useAdmin();
   const { instructor } = useInstructor();
 

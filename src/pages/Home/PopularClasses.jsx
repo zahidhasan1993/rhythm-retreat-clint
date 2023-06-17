@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PopularCard from './PopularCard';
+import BannerTitle from '../Shared/BannerTitle';
 
 const PopularClasses = () => {
     const [allClasses,setAllClasses] = useState([]);
@@ -15,7 +16,7 @@ const PopularClasses = () => {
     // console.log(popular);
     return (
         <div className='my-14'>
-            <h1 className='text-center text-3xl text-blue-700 font-semibold underline my-20' >Our Popular Classes</h1>
+            <BannerTitle mainText='Our Popular Classes' smallText='select your passion'></BannerTitle>
             <div className='md:grid md:grid-cols-3 md:gap-10'>
             {
                 ourPopularClass.map(item => <PopularCard key={item._id} item={item}></PopularCard> )

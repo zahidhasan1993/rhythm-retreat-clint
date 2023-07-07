@@ -29,7 +29,7 @@ const ManageClasses = () => {
       confirmButtonText: `Yes, Approve ${item.className}!!!`,
     }).then((result) => {
       if (result.isConfirmed) {
-        // fetch(`https://rhythm-retreat-server.vercel.app/classes/approve/${item._id}`, {
+        // fetch(`https://rhythm-retreat-backend.vercel.app/classes/approve/${item._id}`, {
         //   method: "PATCH",
         // })
         //   .then((res) => res.json())
@@ -62,7 +62,7 @@ const ManageClasses = () => {
       confirmButtonText: `Yes, Deny ${item.className}!!!`,
     }).then((result) => {
       if (result.isConfirmed) {
-        // fetch(`https://rhythm-retreat-server.vercel.app/classes/deny/${item._id}`, {
+        // fetch(`https://rhythm-retreat-backend.vercel.app/classes/deny/${item._id}`, {
         //   method: "PATCH",
         // })
         //   .then((res) => res.json())

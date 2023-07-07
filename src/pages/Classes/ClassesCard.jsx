@@ -25,7 +25,7 @@ const ClassesCard = ({ item, handleSelect }) => {
   return (
     <div
       className={
-        availableSeats === "0"
+        newAvailableSetas === 0
           ? "card w-full bg-red-700 shadow-xl"
           : "card w-full shadow-xl"
       }

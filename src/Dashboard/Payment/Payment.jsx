@@ -16,7 +16,7 @@ const Payment = () => {
 
   const [myClass,setMyClass] = useState([])
   useEffect(() => {
-    fetch(`https://rhythm-retreat-server.vercel.app/classes/${id}`)
+    fetch(`https://rhythm-retreat-backend.vercel.app/classes/${id}`)
     .then(res => res.json())
     .then(data => setMyClass(data))
   }, [id])

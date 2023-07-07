@@ -16,7 +16,7 @@ const AuthProvider = ({children}) => {
             setUser(currentUser);
 
             if (currentUser) {
-                axios.post("https://rhythm-retreat-server.vercel.app/jwt", {
+                axios.post("https://rhythm-retreat-backend.vercel.app/jwt", {
                     email: currentUser.email,
                 })
                 .then(data => {

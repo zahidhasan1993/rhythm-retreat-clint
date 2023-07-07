@@ -10,7 +10,7 @@ const MyClasses = () => {
   const { data: classes = [] } = useQuery({
     queryKey: ["classes"],
     queryFn: async () => {
-    const res = await fetch("https://rhythm-retreat-server.vercel.app/classes")
+    const res = await fetch("https://rhythm-retreat-backend.vercel.app/classes")
       return res.json()
     },
   });

@@ -3,7 +3,7 @@ import  { useEffect } from 'react';
 import useAuth from './useAuth';
 import { useNavigate } from 'react-router-dom';
 const axiosSecure = axios.create({
-    baseURL: 'https://rhythm-retreat-server.vercel.app',
+    baseURL: 'https://rhythm-retreat-backend.vercel.app',
 });
 
 const useAxiosSecure = () => {

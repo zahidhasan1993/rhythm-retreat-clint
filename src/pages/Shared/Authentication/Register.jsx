@@ -32,7 +32,7 @@ const Register = () => {
           userUpdate(data.name, data.photo)
             .then(() => {
               const user = { name: data.name, email: data.email,photoURL: data.photo, role: 'student'};
-              fetch("https://rhythm-retreat-server.vercel.app/users", {
+              fetch("https://rhythm-retreat-backend.vercel.app/users", {
                 method: "POST",
                 headers: {
                   "Content-type": "application/json",
@@ -66,7 +66,7 @@ const Register = () => {
       .then((result) => {
         console.log(result);
         const user = { name: result.user.displayName, email: result.user.email,photoURL: result.user.photoURL,role: 'student'};
-              fetch("https://rhythm-retreat-server.vercel.app/users", {
+              fetch("https://rhythm-retreat-backend.vercel.app/users", {
                 method: "POST",
                 headers: {
                   "Content-type": "application/json",

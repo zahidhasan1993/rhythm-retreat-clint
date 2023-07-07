@@ -7,6 +7,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import CallUs from "./CallUs";
 import FeedBack from "./FeedBack";
+import AboutUs from "./AboutUs";
 
 const Home = () => {
   useChangeTitle("Home | Rhythm Retreate");
@@ -16,6 +17,7 @@ const Home = () => {
   return (
     <div className="py-20">
       <Banner></Banner>
+      <AboutUs></AboutUs>
       <div data-aos="zoom-in-up">
         <PopularClasses></PopularClasses>
       </div>

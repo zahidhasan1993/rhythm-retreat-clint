@@ -26,7 +26,7 @@ const ManageUsers = () => {
       confirmButtonText: `Yes, Make ${user.name} Admin !!!`,
     }).then((result) => {
       if (result.isConfirmed) {
-        // fetch(`https://rhythm-retreat-server.vercel.app/users/admin/${user._id}`, {
+        // fetch(`https://rhythm-retreat-backend.vercel.app/users/admin/${user._id}`, {
         //   method: "PATCH",
         // })
         //   .then((res) => res.json())

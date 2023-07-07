@@ -16,7 +16,7 @@ const Instructor = () => {
   // });
   const [users ,setUsers] = useState([]);
   useEffect(() => {
-    fetch('https://rhythm-retreat-server.vercel.app/users')
+    fetch('https://rhythm-retreat-backend.vercel.app/users')
     .then(res => res.json())
     .then(data => {
       setUsers(data)

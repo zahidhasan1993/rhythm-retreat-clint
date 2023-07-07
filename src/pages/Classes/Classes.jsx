@@ -14,7 +14,7 @@ const Classes = () => {
   const { user } = useAuth();
   const axios = useAxiosSecure();
   useEffect(() => {
-    fetch("https://rhythm-retreat-server.vercel.app/classes")
+    fetch("https://rhythm-retreat-backend.vercel.app/classes")
       .then((res) => res.json())
       .then((data) => setClasses(data));
   }, []);

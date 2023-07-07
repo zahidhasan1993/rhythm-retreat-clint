@@ -5,7 +5,7 @@ import BannerTitle from '../Shared/BannerTitle';
 const PopularClasses = () => {
     const [allClasses,setAllClasses] = useState([]);
     useEffect(() => {
-        fetch('https://rhythm-retreat-server.vercel.app/classes')
+        fetch('https://rhythm-retreat-backend.vercel.app/classes')
         .then(res => res.json())
         .then(data => setAllClasses(data))
     }, [])

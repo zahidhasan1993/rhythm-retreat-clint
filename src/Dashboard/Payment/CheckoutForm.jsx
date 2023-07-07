@@ -63,7 +63,7 @@ const CheckoutForm = ({ price, id, myClass }) => {
     }
     console.log(paymentIntent);
     if (paymentIntent.status === "succeeded") {
-      fetch(`https://rhythm-retreat-server.vercel.app/updatecount/${id}`, {
+      fetch(`https://rhythm-retreat-backend.vercel.app/updatecount/${id}`, {
         method: "PATCH",
       });
       Swal.fire({

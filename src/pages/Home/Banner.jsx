@@ -12,16 +12,16 @@ const Banner = () => {
   return (
     <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
       <SwiperSlide>
-        <img src={banner1} alt="" className="h-[38rem] w-full" />
+        <img src={banner1} alt="" className="h-[48rem] w-full" />
       </SwiperSlide>
       <SwiperSlide>
-        <img src={banner2} alt="" className="h-[38rem] w-full"/>
+        <img src={banner2} alt="" className="h-[48rem] w-full"/>
       </SwiperSlide>
       <SwiperSlide>
-        <img src={banner3} alt="" className="h-[38rem] w-full"/>
+        <img src={banner3} alt="" className="h-[48rem] w-full"/>
       </SwiperSlide>
       <SwiperSlide>
-        <img src={banner4} alt="" className="h-[38rem] w-full"/>
+        <img src={banner4} alt="" className="h-[48rem] w-full"/>
       </SwiperSlide>
     </Swiper>
   );

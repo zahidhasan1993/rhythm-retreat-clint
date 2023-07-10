@@ -16,7 +16,7 @@ const OurInsturctors = () => {
     return (
         <div>
           <BannerTitle mainText='Popular Instructor' smallText='Our brilliant Instructor'></BannerTitle>
-            <div className='md:grid md:grid-cols-3 md:gap-10'>
+            <div className='md:grid md:grid-cols-3 md:gap-14'>
                 {
                     popularInstructors.map(instructor => <PopularInstructorCard key={instructor._id} instructor={instructor}></PopularInstructorCard>)
                 }

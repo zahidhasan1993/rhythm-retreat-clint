@@ -10,7 +10,7 @@ const PopularCard = ({ item }) => {
         <img
           src={item.image}
           alt="class"
-          className="w-full"
+          className="w-full h-[40vh]"
         />
       </figure>
       <div className="card-body">

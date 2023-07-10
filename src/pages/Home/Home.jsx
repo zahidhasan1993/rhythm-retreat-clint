@@ -8,7 +8,7 @@ import "aos/dist/aos.css";
 import CallUs from "./CallUs";
 import FeedBack from "./FeedBack";
 import AboutUs from "./AboutUs";
-
+import NewClasses from "./NewClasses";
 
 const Home = () => {
   useChangeTitle("Home | Rhythm Retreate");
@@ -19,13 +19,17 @@ const Home = () => {
     <div className="">
       <Banner></Banner>
       <AboutUs></AboutUs>
-      
+
       <div data-aos="zoom-in-up">
         <PopularClasses></PopularClasses>
+      </div>
+      <div className="my-10">
+        <NewClasses></NewClasses>
       </div>
       <div data-aos="fade-up">
         <OurInsturctors></OurInsturctors>
       </div>
+
       <div data-aos="zoom-in">
         <CallUs></CallUs>
       </div>

@@ -45,7 +45,9 @@ const Navbar = () => {
           isActive ? "text-blue-700 font-bold" : "hover:text-blue-700"
         }
       >
-        <li className="pr-3 ">Dashboard</li>
+        {
+          user ? <li className="pr-3 ">Dashboard</li> : <></>
+        }
       </NavLink>
     </>
   );

@@ -31,7 +31,7 @@ const ClassesCard = ({ item, handleSelect }) => {
       }
     >
       <figure>
-        <img src={image} alt="Class Image" className="w-full" />
+        <img src={image} alt="Class Image" className="w-full h-96" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{className}</h2>

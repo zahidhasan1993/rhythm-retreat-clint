@@ -11,7 +11,7 @@ const InstructorCard = ({instructor}) => {
         <img
           src={photoURL}
           alt="Instructor Image"
-          className="w-full h-[18rem]"
+          className="w-full h-96"
         />
       </figure>
       <div className="card-body">

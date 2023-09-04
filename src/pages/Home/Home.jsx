@@ -16,7 +16,7 @@ const Home = () => {
     AOS.init();
   }, []);
   return (
-    <div className="">
+    <div className="container mx-auto">
       <Banner></Banner>
       <AboutUs></AboutUs>
 
@@ -33,7 +33,7 @@ const Home = () => {
       <div data-aos="zoom-in">
         <CallUs></CallUs>
       </div>
-      <div data-aos="zoom-out">
+      <div data-aos="zoom-in-up">
         <FeedBack></FeedBack>
       </div>
     </div>
